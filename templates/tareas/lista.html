@@ -1,0 +1,28 @@
+<div id="lista-tareas-container" class="mt-4">
+    <h6>Tareas del Proyecto</h6>
+    <div class="list-group">
+        {% for tarea in tareas %}
+            {% set p_id = proyecto_id %}
+            {% set t_id = tarea.id %}
+            {% include "tareas/item.html" %}
+        {% else %}
+            <div class="list-group-item text-center text-muted">
+                Este proyecto aún no tiene tareas asignadas.
+            </div>
+        {% endfor %}
+    </div>
+
+    <form hx-post="/tareas/{{ proyecto_id }}/agregar"
+          hx-target="#lista-tareas-container"
+          hx-swap="outerHTML"
+          class="input-group mt-2">
+        <input type="text" name="titulo" class="form-control form-control-sm"
+               placeholder="Nueva tarea..." required minlength="3">
+        <select name="prioridad" class="form-select form-select-sm">
+            <option value="1">Alta</option>
+            <option value="2" selected>Media</option>
+            <option value="3">Baja</option>
+        </select>
+        <button class="btn btn-sm btn-outline-primary" type="submit">+ Agregar</button>
+    </form>
+</div>

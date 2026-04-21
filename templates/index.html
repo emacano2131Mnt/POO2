@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 mb-3">Bienvenido a TaskFlow</h1>
+        <p class="lead">Gestiona proyectos y tareas desde una interfaz web sencilla con FastAPI, Jinja2 y HTMX.</p>
+    </div>
+</div>
+
+<div id="main-content" class="mt-4"
+     hx-get="/proyectos/"
+     hx-trigger="load"
+     hx-swap="innerHTML">
+</div>
+{% endblock %}

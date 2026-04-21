@@ -1,0 +1,33 @@
+<div class="tarea-item list-group-item d-flex justify-content-between align-items-center">
+    <div>
+        <span class="{% if tarea.estado.value == 'completada' %}text-decoration-line-through text-muted{% endif %}">
+            {{ tarea.titulo }}
+            <span class="badge bg-secondary ms-1">
+                {% if tarea.prioridad.value == 1 %}Alta
+                {% elif tarea.prioridad.value == 2 %}Media
+                {% else %}Baja
+                {% endif %}
+            </span>
+            <span class="badge
+                {% if tarea.estado.value == 'pendiente' %}bg-warning text-dark
+                {% elif tarea.estado.value == 'en_progreso' %}bg-primary
+                {% else %}bg-success
+                {% endif %} ms-1">
+                {{ tarea.estado.value | replace('_', ' ') | title }}
+            </span>
+        </span>
+    </div>
+
+    <div class="acciones">
+        {% if tarea.estado.value != 'completada' %}
+            <button hx-patch="/tareas/{{ p_id }}/{{ t_id }}/completar"
+                    hx-target="closest .tarea-item"
+                    hx-swap="outerHTML"
+                    class="btn btn-sm btn-success">
+                Completar
+            </button>
+        {% else %}
+            <span class="badge bg-success">✓ Completada</span>
+        {% endif %}
+    </div>
+</div>

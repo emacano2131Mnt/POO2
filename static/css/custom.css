@@ -1,0 +1,16 @@
+/* Estilos para TaskFlow */
+.tarea-item {
+    transition: all 0.3s ease;
+}
+
+.text-decoration-line-through {
+    opacity: 0.6;
+}
+
+/* Indicador de carga de HTMX */
+.htmx-indicator {
+    display: none;
+}
+.htmx-request .htmx-indicator {
+    display: inline;
+}

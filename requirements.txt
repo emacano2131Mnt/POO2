@@ -1,0 +1,25 @@
+# Herramientas de formateo y calidad
+black
+pylint
+isort
+
+# Testing
+pytest
+pytest-cov
+behave
+
+# Web framework
+fastapi
+uvicorn
+pydantic
+pydantic[email]
+jinja2
+python-multipart
+
+# Base de datos - SQLAlchemy 2.0 + Alembic
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+
+# Drivers de BD (descomentar según entorno)
+# psycopg2-binary   # PostgreSQL
+# mysqlclient       # MySQL

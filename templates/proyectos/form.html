@@ -1,0 +1,22 @@
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Crear Nuevo Proyecto</h5>
+        <form hx-post="/proyectos/crear" 
+              hx-target="#lista-proyectos" 
+              hx-swap="beforeend" 
+              hx-on::after-request="this.reset()">
+            <div class="mb-3">
+                <label class="form-label">Nombre del Proyecto</label>
+                <input type="text" name="nombre" class="form-control" 
+                       placeholder="Ej: Sistema Contable" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Descripción (Opcional)</label>
+                <textarea name="descripcion" class="form-control" rows="2"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+                Guardar Proyecto
+            </button>
+        </form>
+    </div>
+</div>

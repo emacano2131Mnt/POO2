@@ -1,0 +1,26 @@
+<tr>
+    <td>{{ proyecto.nombre }}</td>
+    <td>{{ proyecto.usuario.username }}</td>
+    <td>
+        <span class="badge {% if proyecto.tareas|length > 0 and proyecto.tareas|selectattr('estado', 'equalto', 'completada')|list|length == proyecto.tareas|length %}bg-success{% else %}bg-warning text-dark{% endif %}">
+            {% if proyecto.tareas|length > 0 and proyecto.tareas|selectattr('estado', 'equalto', 'completada')|list|length == proyecto.tareas|length %}
+                Completado
+            {% else %}
+                En progreso
+            {% endif %}
+        </span>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-outline-primary"
+                hx-get="/tareas/{{ proyecto.id }}"
+                hx-target="#tareas-{{ proyecto.id }}"
+                hx-swap="innerHTML">
+            Ver tareas
+        </button>
+    </td>
+</tr>
+<tr>
+    <td colspan="4" class="bg-body-tertiary p-0">
+        <div id="tareas-{{ proyecto.id }}"></div>
+    </td>
+</tr>

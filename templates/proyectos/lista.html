@@ -1,0 +1,32 @@
+<div id="proyectos-container">
+    {% include "proyectos/form.html" %}
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Mis Proyectos</h2>
+        <span class="badge bg-secondary">Total: {{ proyectos|length }}</span>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Líder</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="lista-proyectos">
+                {% for proyecto in proyectos %}
+                    {% include "proyectos/fila_proyecto.html" %}
+                {% else %}
+                    <tr id="sin-proyectos">
+                        <td colspan="4" class="text-center text-muted">
+                            No hay proyectos registrados aún.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
